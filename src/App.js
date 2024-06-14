@@ -5,8 +5,8 @@ import { styles } from "./styles";
 const App = () => {
   return (
     <Container maxWidth="lg">
-      <AppBar position="static" color="inherit">
-        <Typography variant="h2" align="center">
+      <AppBar sx={styles.topBar} position="static" color="inherit">
+        <Typography sx={styles.heading} variant="h2" align="center">
           Timeline
         </Typography>
       </AppBar>
