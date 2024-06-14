@@ -1,7 +1,7 @@
 import React from "react";
 import Posts from "./components/Posts/Posts";
 import { Container, AppBar, Typography, Grow, Grid } from "@mui/material";
-
+import { styles } from "./styles";
 const App = () => {
   return (
     <Container maxWidth="lg">
