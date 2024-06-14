@@ -1,4 +1,5 @@
 import React from "react";
+import Posts from "./components/Posts/Posts";
 import { Container, AppBar, Typography, Grow, Grid } from "@mui/material";
 
 const App = () => {
@@ -9,6 +10,9 @@ const App = () => {
           Timeline
         </Typography>
       </AppBar>
+      <Container>
+        <Posts />
+      </Container>
     </Container>
   );
 };
