@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Card,
   CardActions,
@@ -6,29 +7,60 @@ import {
   CardMedia,
   Button,
   Typography,
+  Grid,
   Box,
 } from "@mui/material";
 import CommentIcon from "@mui/icons-material/Comment";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import Comments from "../Comment/Comments";
 
-const Post = () => {
+const Post = ({ post }) => {
+  const [expandPost, setExpandPost] = useState(false);
+
+  const handleClick = () => {
+    if (expandPost === false) {
+      setExpandPost(true);
+    } else {
+      setExpandPost(false);
+    }
+  };
+
   return (
     <Card>
-      <Box>
-        <Typography variant="h6">username</Typography>
-      </Box>
-      <Typography variant="h5" gutterBottom>
-        Post Title
-      </Typography>
       <CardContent>
+        <Typography variant="h6">{post.username}</Typography>
+      </CardContent>
+      <CardContent>
+        <Typography align="center" variant="h5" gutterBottom>
+          {post.title}
+        </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          Post Message
+          {post.body}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">
-          <CommentIcon />
-        </Button>
-      </CardActions>
+
+      {expandPost ? (
+        <CardContent>
+          <Grid container alignItems="stretch" spacing={2}>
+            {post.postComments.map((comment) => (
+              <Grid item xs={12}>
+                <Comments comment={comment} />
+              </Grid>
+            ))}
+          </Grid>
+          <CardActions>
+            <Button size="small">
+              <ExpandLessIcon onClick={() => handleClick()} />
+            </Button>
+          </CardActions>
+        </CardContent>
+      ) : (
+        <CardActions>
+          <Button size="small">
+            <CommentIcon onClick={() => handleClick()} />
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 };
