@@ -12,7 +12,6 @@ export const styles = {
   username: {
     color: theme.palette.primary.medium,
     fontWeight: "bold",
-    fontSize: 16,
   },
   commentbody: {
     color: theme.palette.secondary.dusky,
