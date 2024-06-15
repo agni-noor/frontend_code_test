@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post/Post";
-import axios from "axios";
 import { useContext } from "react";
 import { PostContext } from "../../context/PostContext";
 import { UserContext } from "../../context/UserContext";
@@ -27,7 +26,8 @@ const Posts = () => {
           postComments: commentData,
         };
       });
-      setData(processedData);
+      const sortedData = processedData.sort((a, b) => b.id - a.id);
+      setData(sortedData);
     }
   }, [posts, users, comments]);
 
