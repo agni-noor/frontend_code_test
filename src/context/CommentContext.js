@@ -10,7 +10,7 @@ export const CommentProvider = ({ children }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get("/comments");
+        const response = await axios.get("https://jsonplaceholder.typicode.com/comments");
         setComments(response.data);
       } catch (err) {
         console.log(err);

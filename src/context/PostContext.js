@@ -10,7 +10,7 @@ export const PostProvider = ({ children }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("/posts");
+        const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
         setPosts(response.data);
       } catch (err) {
         console.log(err);
