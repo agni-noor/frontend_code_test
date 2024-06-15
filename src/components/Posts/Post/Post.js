@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+
 import {
   Card,
   CardActions,
@@ -43,7 +44,7 @@ const Post = ({ post }) => {
         <CardContent>
           <Grid container alignItems="stretch" spacing={2}>
             {post.postComments.map((comment) => (
-              <Grid item xs={12}>
+              <Grid item xs={12} key={comment.id}>
                 <Comments comment={comment} />
               </Grid>
             ))}

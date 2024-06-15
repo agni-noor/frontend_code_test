@@ -1,53 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post/Post";
 import axios from "axios";
+import { useContext } from "react";
+import { PostContext } from "../../context/PostContext";
+import { UserContext } from "../../context/UserContext";
+import { CommentContext } from "../../context/CommentContext";
 
 import { Grid, CircularProgress } from "@mui/material";
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
-
-  const [users, setUsers] = useState([]);
-
+  const { posts, isLoading: postsLoading } = useContext(PostContext);
+  const { users, isLoading: usersLoading } = useContext(UserContext);
+  const { comments, isLoading: commentsLoading } = useContext(CommentContext);
   const [data, setData] = useState([]);
-
-  const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get("/users");
-        setUsers(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get("/posts");
-        setPosts(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    const fetchComments = async () => {
-      try {
-        const response = await axios.get("/comments");
-        setComments(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchUsers();
-    fetchPosts();
-    fetchComments();
-  }, []);
 
   useEffect(() => {
     if (posts.length && users.length && comments.length) {
-      const mappedArray = posts.map((post) => {
+      const processedData = posts.map((post) => {
         const userInfo = users.find((user) => user.id === post.userId);
         const commentData = comments.filter(
           (comment) => comment.postId === post.id
@@ -58,8 +27,7 @@ const Posts = () => {
           postComments: commentData,
         };
       });
-      console.log(mappedArray);
-      setData(mappedArray);
+      setData(processedData);
     }
   }, [posts, users, comments]);
 
