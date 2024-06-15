@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { PostContext } from "../../context/PostContext";
 import { UserContext } from "../../context/UserContext";
 import { CommentContext } from "../../context/CommentContext";
-
 import { Grid, CircularProgress } from "@mui/material";
 
 const Posts = () => {

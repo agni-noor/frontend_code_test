@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import { styles } from "./styles";
 import {
   Card,
   CardActions,
@@ -27,15 +27,17 @@ const Post = ({ post }) => {
   };
 
   return (
-    <Card>
+    <Card sx={styles.card}>
       <CardContent>
-        <Typography variant="h6">{post.username}</Typography>
+        <Typography sx={styles.username} variant="h6">
+          {post.username}
+        </Typography>
       </CardContent>
       <CardContent>
-        <Typography align="center" variant="h5" gutterBottom>
+        <Typography sx={styles.title} align="center" variant="h5" gutterBottom>
           {post.title}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography sx={styles.postbody} variant="body2" component="p">
           {post.body}
         </Typography>
       </CardContent>

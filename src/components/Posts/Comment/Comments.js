@@ -1,22 +1,22 @@
 import React from "react";
 
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
+import { styles } from "./styles";
 
 const Comments = ({ comment }) => {
   return (
-    <Card>
+    <Card sx={styles.card}>
       <CardContent>
-        <Typography variant="h7"> {comment.name}</Typography>
+        <Typography variant="h7" sx={styles.username}>
+          {comment.name}
+        </Typography>
 
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography
+          sx={styles.commentbody}
+          variant="body2"
+          color="textSecondary"
+          component="p"
+        >
           {comment.body}
         </Typography>
       </CardContent>

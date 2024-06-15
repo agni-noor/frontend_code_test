@@ -9,14 +9,12 @@ export const styles = {
     height: "100%",
     position: "relative",
   },
-  title: {
-    padding: "0 16px",
-    color: theme.palette.secondary.medium,
-  },
   username: {
     color: theme.palette.primary.medium,
+    fontWeight: "bold",
+    fontSize: 16,
   },
-  postbody: {
+  commentbody: {
     color: theme.palette.secondary.dusky,
   },
 };
